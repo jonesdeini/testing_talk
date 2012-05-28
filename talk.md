@@ -1,3 +1,22 @@
+## Fixtures
+test/fixtures/users.yml
+```yml
+fred:
+  first_name: Fred
+  last_name: Flinstone
+  email: fflinstone@yabadaba.do
+barney:
+  first_name: Barney
+  last_name: Rubble
+  email: brubble@yabadaba.do
+```
+# Why we are going to use fixtures
+* Fixtures are global, spread out, and brittle
+* We would like a system to be local, compact and robust
+* So every test can have an individual setup tuned to that test
+* So the test data is easy to generate
+* So tests dont depend on changes made to setup data in other tests
+* We should be able to specify more data in the current test without breaking other tests
 ## Factory Girl
 
 ```ruby
@@ -37,14 +56,14 @@ Instead try to create all the things within the setup method of the test
 ** For now we can just deal with large setup methods until we get better test coverage.
 
 * factories can generate name with 'sequence(:name) {|n| "Category #{n}" }'
-** will create Category 1, Category 2, etc
-** DO NOT rely on this convention for testing
+  this will create Category 1, Category 2, etc
+* DO NOT rely on this convention for testing
 ```ruby
 FactoryGirl.define do
   factory :category do
     sequence(:name) {|n| "Category #{n}" }
+  end
 end
-
 describe Foo do
   before do
     @cat = create(:category)
