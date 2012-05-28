@@ -1,4 +1,4 @@
-## Fixtures
+# Fixtures
 test/fixtures/users.yml
 ```yml
 fred:
@@ -10,14 +10,15 @@ barney:
   last_name: Rubble
   email: brubble@yabadaba.do
 ```
-# Why we are going to use fixtures
+## Why we are going to factories instead of fixtures
 * Fixtures are global, spread out, and brittle
 * We would like a system to be local, compact and robust
 * So every test can have an individual setup tuned to that test
 * So the test data is easy to generate
 * So tests dont depend on changes made to setup data in other tests
 * We should be able to specify more data in the current test without breaking other tests
-## Factory Girl
+
+# Factory Girl
 
 ```ruby
 # Returns a saved User instance
