@@ -1,3 +1,26 @@
+# Lofty Goals
+* Any change of the logic of the application should be driven by a failed test
+* A test should be as close as possible to the assoicated code
+* If its not tested, it's broken
+* Testing is supposed to help for the long term. The long term could be tomorrow or even sooner
+* Tests are code, refactor them too
+* Start a bug fix by writing a test
+
+# What can testing do for us?
+* The number one thing testing can accomplish is preventing regression bugs
+* Being able to catch a regression bug before youve even commited the code will save everyone time
+* It can also serve as documentation for our code
+* When developing it makes it easier to find a place to start. 
+Its easy to think of something the program should do so write a test for that
+ 
+# Classic TDD Process
+1. create a test, it should be short and only test one thing
+2. make sure the test fails
+3. write the simplest code to make the test pass
+4. Once the test passes go back and optimize/dry up your code
+* If followed this process should produce code made of small methods, that each do one thing.
+These methods tend to be loosely coupled and have minimal side effects
+
 # CI
 * We use Jenkins which is an open source fork of Hudson
 * CI lives at ci.amsapps.com
