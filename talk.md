@@ -1,3 +1,14 @@
+# CI
+* We use Jenkins which is an open source fork of Hudson
+* CI lives at ci.amsapps.com
+* fubot jenkins list 
+* bulid status badge in markdown
+
+## CI still needs
+* security/users
+* a real OS
+* to run headless integration tests using waitir or capybara-webkit
+
 # Functional
 * Tests for controllers
 * We have none, but these aren't the most important tests for now
@@ -10,10 +21,12 @@
 # Unit
 * Tests for models
 * This is the main area where we need to expand our test coverage
-* In webadmit we use several testing tools:
-+ MiniTest Unit/Spec
-+ ActiveSupport::TestCase
-+ Shoulda
+
+## Testing tools:
+* MiniTest Unit/Spec
+* ActiveSupport::TestCase
+* Shoulda
+
 ## How to run tests
 * rake test:units This runs all the unit tests. this currently what ci is running
 * rake test TEST=test/unit/my_awesome_test.rb
@@ -72,6 +85,7 @@ this is great but has at least one thing to watch out for:
 + if you use a FactoryGirl method in your factory you still need to explictly say FactoryGirl.method. If you forget this it will cause weird errors that are pretty hard to trace.
 + You could always include the test_helper in the factory but creating factories within a factory is generally something to try to avoid.
 + Instead try to create all the things within the setup method of the test
+
 * So I know you are thinking 'that shit aint DRY mang', well it can be.
 + We can create setup helpers to avoid repeating ourselves.
 + For now we can just deal with large setup methods until we get better test coverage.
