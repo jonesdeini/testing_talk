@@ -1,3 +1,23 @@
+# Functional
+* Tests for controllers
+* We have none, but these aren't the most important tests for now
+
+# Integration
+* Tests for controllers interacting together.
+* We use Capybara and some other goodies to make it headless so it can be ran by ci
+* A basic integration test would be logging into webadmit
+
+# Unit
+* Tests for models
+* This is the main area where we need to expand our test coverage
+* In webadmit we use several testing tools:
++ MiniTest Unit/Spec
++ ActiveSupport::TestCase
++ Shoulda
+## How to run tests
+* rake test:units This runs all the unit tests. this currently what ci is running
+* rake test TEST=test/unit/my_awesome_test.rb
+
 # Fixtures
 test/fixtures/users.yml
 ```yml
@@ -49,30 +69,32 @@ end
 
 * We include the factory girl method in test_helper.rb so you only need to say create instead of FactoryGirl.create
 this is great but has at least one thing to watch out for:
-** if you use a FactoryGirl method (create/build/stub) in your factory you still need to explictly say FactoryGirl.method. If you forget this it will cause weird errors that are pretty hard to trace.
-You could always include the test_helper in the factory but creating factories within a factory is generally something to try to avoid.
-Instead try to create all the things within the setup method of the test
++ if you use a FactoryGirl method in your factory you still need to explictly say FactoryGirl.method. If you forget this it will cause weird errors that are pretty hard to trace.
++ You could always include the test_helper in the factory but creating factories within a factory is generally something to try to avoid.
++ Instead try to create all the things within the setup method of the test
 * So I know you are thinking 'that shit aint DRY mang', well it can be.
-** We can create setup helpers to avoid repeating ourselves.
-** For now we can just deal with large setup methods until we get better test coverage.
++ We can create setup helpers to avoid repeating ourselves.
++ For now we can just deal with large setup methods until we get better test coverage.
 
 * factories can generate name with 'sequence(:name) {|n| "Category #{n}" }'
   this will create Category 1, Category 2, etc
 * DO NOT rely on this convention for testing
+
 ```ruby
-FactoryGirl.define do
-  factory :category do
-    sequence(:name) {|n| "Category #{n}" }
-  end
-end
-describe Foo do
-  before do
-    @cat = create(:category)
+  FactoryGirl.define do
+    factory :category do
+      sequence(:name) {|n| "Category #{n}" }
+    end
   end
 
-  it "must have a name of Category 1" do
-    @cat.name.must_equal "Category 1"
-  end
+  describe Foo do
+    before do
+      @cat = create(:category)
+    end
 
-end
+    it "must have a name of Category 1" do
+      @cat.name.must_equal "Category 1"
+    end
+
+  end
 ```
