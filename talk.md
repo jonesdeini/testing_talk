@@ -146,3 +146,19 @@ this is great but has at least one thing to watch out for:
 
   end
 ```
+
+# Guard
+* https://github.com/guard/guard-minitest
+* "Minitest guard allows to automatically & intelligently launch tests with minitest framework when files are modified."
+* Guardfile in the root of webadmit, that shows what folders it's watching for changes
+* When you modify the guardfile, you will need to restart guard
+* guard-livereload will watch your stylesheets and views and then reload your broswer when they change
+
+# Spork
+* preloads rails env to make tests run faster
+* https://github.com/sporkrb/spork-rails
+* prefork all the things to load up before spork starts
+* each_run adding things here makes the tests slower so you better have a good reason
+
+# Guard-Spork
+* simply run guard 
