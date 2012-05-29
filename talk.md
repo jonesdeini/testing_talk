@@ -1,3 +1,13 @@
+# I can haz good code?
+* Code isn’t good when it’s tested, DRY, or SOLID. Code is good when it works and we can work with it.
+When our teammates can understand our code quickly, respond to change, and are relaxed and happy, we’re writing good code.
+* Slow or brittle tests make code harder to change. 
+We have to be careful about writing the correct tests and the correct amount of tests.
+* Test-driven development helps us understand code because we state the reason for each line of application code in the test. 
+It also makes us happy by providing a clear process for working.
+* An automated test suite helps us change code because we have an early warning system when we break an existing component. 
+It is fun to work with because we’re more confident and less fearful
+
 # Lofty Goals
 * Any change of the logic of the application should be driven by a failed test
 * A test should be as close as possible to the assoicated code
@@ -18,6 +28,7 @@ Its easy to think of something the program should do so write a test for that
 2. make sure the test fails
 3. write the simplest code to make the test pass
 4. Once the test passes go back and optimize/dry up your code
+
 * If followed this process should produce code made of small methods, that each do one thing.
 These methods tend to be loosely coupled and have minimal side effects
 
